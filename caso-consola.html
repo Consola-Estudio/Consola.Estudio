@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONSOLA — Identidad Visual</title>
+<style>
+  @font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:62% 125%;src:url(fuentes/archivo.woff2) format('woff2')}
+  @font-face{font-family:'Plex Mono';font-style:normal;font-weight:400;src:url(fuentes/plexmono.woff2) format('woff2')}
+  @font-face{font-family:'Plex Mono';font-style:normal;font-weight:500;src:url(fuentes/plexmono500.woff2) format('woff2')}
+
+  :root{
+    --noche:#121712; --cal:#F4F3EC; --terminal:#48E27B; --cancha:#0B6B36;
+    --graf-claro:#9BA398; --graf-oscuro:#666C63;
+    --linea:rgba(244,243,236,.16); --linea-suave:rgba(244,243,236,.07);
+    --linea-dark:rgba(18,23,18,.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--noche); color:var(--cal);
+    font-family:'Archivo',sans-serif; font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  .mono{font-family:'Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 clamp(20px,4vw,56px)}
+  .verde{color:var(--terminal)}
+
+  .cond{font-stretch:68%; font-weight:760; text-transform:uppercase; letter-spacing:.005em}
+
+  /* cursor de terminal */
+  .cursor{display:inline-block; width:.5em; height:.92em; background:var(--terminal); vertical-align:baseline; transform:translateY(.08em); margin-left:.08em}
+  @keyframes blink{0%,55%{opacity:1}56%,100%{opacity:0}}
+  .cursor.vivo{animation:blink 1.1s steps(1) infinite}
+  @media (prefers-reduced-motion:reduce){.cursor.vivo{animation:none}}
+
+  /* corchetes HUD */
+  .hud{position:relative; padding:18px}
+  .hud::before,.hud::after{content:""; position:absolute; width:16px; height:16px}
+  .hud::before{top:0; left:0; border-top:2px solid var(--terminal); border-left:2px solid var(--terminal)}
+  .hud::after{bottom:0; right:0; border-bottom:2px solid var(--terminal); border-right:2px solid var(--terminal)}
+
+  /* ---------- barra marcador ---------- */
+  .topbar{border-bottom:1px solid var(--linea); position:sticky; top:0; background:var(--noche); z-index:10}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding-top:13px; padding-bottom:13px; gap:16px}
+  .topbar .left{display:flex; align-items:center; gap:10px}
+  .topbar .right{color:var(--graf-claro)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; padding:clamp(70px,12vh,140px) 0 clamp(56px,9vh,100px); border-bottom:1px solid var(--linea); overflow:hidden}
+  .circulo-central{position:absolute; right:-14%; top:-30%; width:min(52vw,640px); aspect-ratio:1; border:1px solid var(--linea); border-radius:50%; pointer-events:none}
+  .circulo-central::after{content:""; position:absolute; inset:38%; border:1px solid var(--linea-suave); border-radius:50%}
+  .hero .kicker{color:var(--terminal); margin-bottom:28px}
+  .wordmark{
+    font-family:'Archivo'; font-stretch:68%; font-weight:780;
+    font-size:clamp(70px,16.5vw,224px); line-height:.9; letter-spacing:.005em;
+    text-transform:uppercase; margin-left:-.03em; position:relative; z-index:1;
+  }
+  .wordmark .cursor{width:.42em; height:.78em}
+  .hero .sub{font-size:clamp(18px,2.2vw,24px); color:var(--graf-claro); margin-top:32px; max-width:30em; position:relative; z-index:1}
+  .hero .sub b{color:var(--cal); font-weight:620}
+  .hero .marcador{margin-top:46px; display:flex; gap:clamp(18px,4vw,52px); flex-wrap:wrap; align-items:center; position:relative; z-index:1}
+  .hero .marcador .mono{color:var(--graf-claro)}
+  .hero .marcador .vs{color:var(--terminal)}
+
+  /* ---------- secciones ---------- */
+  section{border-bottom:1px solid var(--linea); padding:clamp(56px,8vh,100px) 0; position:relative}
+  .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:clamp(30px,5vh,56px)}
+  .sec-head .num{font-family:'Plex Mono',monospace; font-size:12px; color:var(--terminal); letter-spacing:.1em}
+  .sec-head h2{font-stretch:68%; font-weight:740; text-transform:uppercase; font-size:clamp(28px,4vw,46px); letter-spacing:.01em; line-height:1.05}
+  .cols{display:grid; grid-template-columns:5fr 7fr; gap:clamp(28px,4vw,64px); align-items:start}
+  .prosa p{margin-bottom:1.1em; max-width:34em; color:var(--graf-claro)}
+  .prosa p b,.prosa p strong{color:var(--cal); font-weight:620}
+  a{color:var(--terminal)}
+
+  /* ---------- tres consolas ---------- */
+  .tres{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .consola-card{border:1px solid var(--linea); padding:22px 20px 24px; display:flex; flex-direction:column; gap:14px; min-height:190px}
+  .consola-card .icono{height:44px; display:flex; align-items:flex-end}
+  .consola-card .icono svg{height:40px; width:auto}
+  .consola-card .icono line,.consola-card .icono rect,.consola-card .icono circle,.consola-card .icono path{stroke:var(--terminal); fill:none; stroke-width:1.6}
+  .consola-card h4{font-weight:620; font-size:16.5px}
+  .consola-card p{font-size:14px; color:var(--graf-claro); line-height:1.5}
+  .consola-card .mono{color:var(--graf-claro); font-size:10px}
+
+  /* ---------- logotipo ---------- */
+  .logo-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+  .logo-tile{border:1px solid var(--linea); aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; position:relative}
+  .logo-tile .tag{position:absolute; top:12px; left:14px; color:var(--graf-claro)}
+  .lm{font-family:'Archivo'; font-stretch:68%; font-weight:780; text-transform:uppercase; letter-spacing:.005em; font-size:clamp(30px,4.8vw,56px); line-height:1}
+  .lm .cursor{width:.42em; height:.78em}
+  .lm-sub{font-family:'Plex Mono',monospace; font-size:10px; letter-spacing:.5em; text-transform:uppercase; color:var(--graf-claro); margin-top:4px}
+  .tile-claro{background:var(--cal); color:var(--noche)}
+  .tile-claro .tag,.tile-claro .lm-sub{color:var(--graf-oscuro)}
+  .tile-claro .cursor{background:var(--cancha)}
+  .tile-verde{background:var(--cancha); color:var(--cal)}
+  .tile-verde .tag,.tile-verde .lm-sub{color:#a7d4b8}
+  .tile-verde .cursor{background:var(--cal)}
+  .logo-reglas{margin-top:26px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .regla{border-top:2px solid var(--cal); padding-top:12px; font-size:14.5px; color:var(--graf-claro)}
+  .regla b{display:block; color:var(--cal); font-weight:620; margin-bottom:4px; font-size:15px}
+
+  /* ---------- paleta ---------- */
+  .pal{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .sw{border:1px solid var(--linea)}
+  .sw .chip{height:110px}
+  .sw .info{padding:14px 16px 16px; border-top:1px solid var(--linea)}
+  .sw .info b{font-weight:620; font-size:16px; display:block}
+  .sw .info .hex{font-family:'Plex Mono',monospace; font-size:12px; color:var(--terminal); margin:2px 0 8px; display:block; letter-spacing:.06em}
+  .sw .info span{font-size:13.5px; color:var(--graf-claro); line-height:1.45; display:block}
+
+  /* ---------- tipografía ---------- */
+  .spec{border:1px solid var(--linea)}
+  .spec-row{display:grid; grid-template-columns:170px 1fr; border-bottom:1px solid var(--linea-suave); padding:clamp(14px,2.4vw,26px) clamp(16px,2.6vw,30px); gap:18px; align-items:baseline}
+  .spec-row:last-child{border-bottom:none}
+  .spec-row .lbl{color:var(--graf-claro)}
+  .t-display{font-stretch:68%; font-weight:780; font-size:clamp(38px,6vw,72px); letter-spacing:.005em; line-height:.95; text-transform:uppercase}
+  .t-h1{font-weight:640; font-size:clamp(24px,3.2vw,36px); letter-spacing:-.01em; line-height:1.15}
+  .t-body{font-weight:400; font-size:17px; max-width:36em; color:var(--graf-claro)}
+  .t-hud{font-family:'Plex Mono',monospace; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--terminal)}
+
+  /* ---------- recursos ---------- */
+  .recurso{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px}
+  .rec-tile{border:1px solid var(--linea); padding:clamp(20px,3vw,32px); min-height:250px; display:flex; flex-direction:column; justify-content:space-between; gap:20px}
+  .rec-tile p{font-size:14px; color:var(--graf-claro); line-height:1.5}
+  .rec-tile p b{color:var(--cal)}
+  .rec-visual{height:110px; display:flex; align-items:center; justify-content:center}
+  .rec-visual svg{width:100%; height:100%}
+  .marcador-demo{font-family:'Plex Mono',monospace; font-size:12px; letter-spacing:.1em; line-height:2.2; color:var(--graf-claro)}
+  .marcador-demo .v{color:var(--terminal)}
+
+  /* ---------- aplicaciones ---------- */
+  .apps{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+  .app-frame{border:1px solid var(--linea); padding:clamp(20px,3vw,36px); display:flex; flex-direction:column; gap:18px}
+  .app-frame>.mono{color:var(--graf-claro)}
+  .tarjetas{display:flex; gap:14px; flex-wrap:wrap}
+  .tarjeta{width:min(250px,100%); aspect-ratio:86/54; border:1px solid var(--linea); padding:16px; display:flex; flex-direction:column; justify-content:space-between; background:var(--noche)}
+  .tarjeta .lm{font-size:22px}
+  .tarjeta.clara{background:var(--cal); color:var(--noche); border-color:var(--linea-dark)}
+  .tarjeta.clara .mono{color:var(--graf-oscuro); letter-spacing:.1em}
+  .tarjeta.clara .nombre{font-weight:640; font-size:15px}
+  .tarjeta.clara .cursor{background:var(--cancha)}
+  .ig{aspect-ratio:1/1; border:1px solid var(--linea); padding:clamp(18px,2.6vw,30px); display:flex; flex-direction:column; justify-content:space-between; background:var(--noche); position:relative; overflow:hidden}
+  .ig .arco{position:absolute; left:-60px; bottom:-60px; width:150px; height:150px; border:1px solid var(--linea); border-radius:50%}
+  .ig .frase{font-stretch:68%; font-weight:760; text-transform:uppercase; font-size:clamp(24px,3.2vw,38px); line-height:.98; max-width:8em}
+  .ig .frase em{font-style:normal; color:var(--terminal)}
+  .ig .pie{display:flex; justify-content:space-between; align-items:center; color:var(--graf-claro)}
+  .webhero{border:1px solid var(--linea)}
+  .webhero .chrome{display:flex; gap:6px; padding:9px 12px; border-bottom:1px solid var(--linea)}
+  .webhero .chrome i{width:8px;height:8px;border-radius:50%;background:var(--linea);display:block}
+  .webhero .nav{display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid var(--linea-suave)}
+  .webhero .nav .lm{font-size:16px}
+  .webhero .nav .links{display:flex; gap:16px; color:var(--graf-claro)}
+  .webhero .cuerpo{padding:clamp(24px,3.6vw,44px) 18px clamp(28px,4vw,48px); position:relative; overflow:hidden}
+  .webhero .medio-campo{position:absolute; top:0; bottom:0; right:22%; width:1px; background:var(--linea-suave)}
+  .webhero h3{font-stretch:68%; font-weight:760; text-transform:uppercase; font-size:clamp(26px,3.4vw,42px); line-height:.98; max-width:13em; position:relative}
+  .webhero h3 em{font-style:normal; color:var(--terminal)}
+  .webhero .cta{display:inline-block; margin-top:22px; font-family:'Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--terminal); border:1px solid var(--terminal); padding:10px 16px; text-decoration:none; position:relative}
+
+  /* ---------- proceso ---------- */
+  .proceso{display:grid; grid-template-columns:repeat(6,1fr); gap:0; border:1px solid var(--linea)}
+  .fase{border-right:1px solid var(--linea-suave); padding:18px 14px 20px; display:flex; flex-direction:column; gap:10px}
+  .fase:last-child{border-right:none}
+  .fase .n{font-family:'Plex Mono',monospace; font-size:10px; color:var(--terminal); letter-spacing:.12em}
+  .fase b{font-stretch:68%; font-weight:720; text-transform:uppercase; font-size:15px; line-height:1.1}
+  .fase span{font-size:12.5px; color:var(--graf-claro); line-height:1.45}
+
+  /* ---------- pasos ---------- */
+  .pasos{border:1px solid var(--linea)}
+  .paso{display:grid; grid-template-columns:64px 1fr; border-bottom:1px solid var(--linea-suave); padding:18px clamp(16px,2.6vw,28px); gap:14px; align-items:baseline}
+  .paso:last-child{border-bottom:none}
+  .paso .n{font-family:'Plex Mono',monospace; font-size:12px; color:var(--terminal)}
+  .paso p{font-size:15.5px; color:var(--graf-claro); max-width:44em}
+  .paso b{color:var(--cal); font-weight:620}
+
+  footer{padding:44px 0 60px}
+  footer .wrap{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; color:var(--graf-claro)}
+
+  .rv{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+  .rv.in{opacity:1; transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width:860px){
+    .cols,.apps,.logo-grid{grid-template-columns:1fr}
+    .tres,.recurso{grid-template-columns:1fr}
+    .pal{grid-template-columns:1fr 1fr}
+    .logo-reglas{grid-template-columns:1fr}
+    .spec-row{grid-template-columns:1fr; gap:6px}
+    .proceso{grid-template-columns:1fr 1fr 1fr}
+    .fase{border-bottom:1px solid var(--linea-suave)}
+  }
+  @media (max-width:520px){.pal{grid-template-columns:1fr}.proceso{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="left"><a href="index.html" class="mono" style="color:var(--terminal);text-decoration:none">&lt; volver</a>
+      <span class="mono">Consola<span class="cursor" style="width:6px;height:11px"></span></span>
+    </div>
+    <span class="mono right">Identidad V2.0 · Modo cooperativo · Julio 2026</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="circulo-central"></div>
+  <div class="wrap">
+    <div class="kicker mono rv">&gt; iniciar sesión — se juega en serio_</div>
+    <h1 class="wordmark rv">Consola<span class="cursor vivo"></span></h1>
+    <p class="sub rv">La consola de videojuegos. La consola del programador. La consola de mezcla. <b>Tres oficios, una palabra, un equipo de dos.</b></p>
+    <div class="marcador rv">
+      <span class="mono">P1 · J. Rueda</span>
+      <span class="mono vs">—</span>
+      <span class="mono">P2 · J.D. López</span>
+      <span class="mono" style="margin-left:auto">consola.studio</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>El nombre</h2></div>
+    <div class="cols">
+      <div class="prosa rv">
+        <p>Una consola es <b>el lugar desde donde se controla lo que otros van a ver, oír y usar.</b> Es la única palabra del español donde los tres oficios de esta casa son la misma cosa.</p>
+        <p>El estudio se para frente a sus consolas como un equipo de dos frente a la pantalla: <b>modo cooperativo</b>. Habilidades distintas, misma partida.</p>
+        <p>Y la marca gráfica sale del propio nombre: <b>el cursor</b> el bloque verde que parpadea en toda terminal esperando la siguiente orden. Significa una sola cosa: <b>estamos en línea, listos.</b></p>
+      </div>
+      <div class="tres rv">
+        <div class="consola-card">
+          <div class="icono"><svg viewBox="0 0 64 40"><rect x="4" y="10" width="56" height="22" rx="11"/><line x1="18" y1="17" x2="18" y2="25"/><line x1="14" y1="21" x2="22" y2="21"/><circle cx="45" cy="18" r="1.8"/><circle cx="51" cy="23" r="1.8"/></svg></div>
+          <h4>La consola de juego</h4>
+          <p>Donde los dos aprendieron que una gran experiencia se nota en las manos: respuesta, ritmo, detalle.</p>
+          <span class="mono">Jugador_ambos</span>
+        </div>
+        <div class="consola-card">
+          <div class="icono"><svg viewBox="0 0 64 40"><rect x="4" y="4" width="56" height="32" rx="2"/><path d="M12 14 l7 6 -7 6"/><line x1="24" y1="27" x2="34" y2="27"/></svg></div>
+          <h4>La consola del programador</h4>
+          <p>La terminal donde se construye lo que funciona: web, sistemas, interfaces que no se caen.</p>
+          <span class="mono">P1 desarrollo</span>
+        </div>
+        <div class="consola-card">
+          <div class="icono"><svg viewBox="0 0 64 40"><line x1="14" y1="8" x2="14" y2="32"/><line x1="32" y1="8" x2="32" y2="32"/><line x1="50" y1="8" x2="50" y2="32"/><rect x="10" y="22" width="8" height="4"/><rect x="28" y="12" width="8" height="4"/><rect x="46" y="18" width="8" height="4"/></svg></div>
+          <h4>La consola de mezcla</h4>
+          <p>Donde lo audiovisual toma forma: video, sonido, motion, la historia que se queda.</p>
+          <span class="mono">P2 multimedia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Logotipo</h2></div>
+    <div class="logo-grid rv">
+      <div class="logo-tile">
+        <span class="tag mono">Principal · sobre noche</span>
+        <span class="lm">Consola<span class="cursor vivo"></span></span>
+        <span class="lm-sub">Estudio</span>
+      </div>
+      <div class="logo-tile tile-claro">
+        <span class="tag mono">Modo claro</span>
+        <span class="lm">Consola<span class="cursor"></span></span>
+        <span class="lm-sub">Estudio</span>
+      </div>
+      <div class="logo-tile">
+        <span class="tag mono">Compacto</span>
+        <span class="lm" style="font-size:clamp(22px,3vw,34px)">C<span class="cursor" style="width:.42em;height:.78em"></span></span>
+      </div>
+      <div class="logo-tile tile-verde">
+        <span class="tag mono">Sobre verde cancha</span>
+        <span class="lm">Consola<span class="cursor"></span></span>
+        <span class="lm-sub">Estudio</span>
+      </div>
+    </div>
+    <div class="logo-reglas rv">
+      <div class="regla"><b>Construcción</b>Archivo variable: anchura 68%, peso 780, mayúsculas. El cursor mide 0.42 em de ancho por 0.78 em de alto, separado 0.08 em de la A final. En digital parpadea (1.1 s, corte seco); en impreso queda fijo.</div>
+      <div class="regla"><b>Versión compacta</b>La C con cursor "C_" para avatar, favicon y marca de agua. La C es la consola; el cursor, la señal de listo.</div>
+      <div class="regla"><b>Prohibiciones</b>No usar el cursor sin la palabra (solo la versión compacta lo permite junto a la C). No cambiar la velocidad del parpadeo. No aplicar glow ni neón. No usar otra fuente jamás.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Paleta</h2></div>
+    <div class="pal rv">
+      <div class="sw"><div class="chip" style="background:#121712;border-bottom:1px solid var(--linea)"></div><div class="info"><b>Noche</b><span class="hex">#121712</span><span>Fondo principal. Negro con una gota de verde: la cancha de noche, la pantalla en reposo.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#F4F3EC"></div><div class="info"><b>Cal</b><span class="hex">#F4F3EC</span><span>El blanco de las líneas de la cancha. Texto sobre Noche (16.3:1) y fondo del modo claro.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#48E27B"></div><div class="info"><b>Verde Terminal</b><span class="hex">#48E27B</span><span>El acento (~5%): cursor, enlaces, marcador. Césped y prompt encendido. 10.8:1 sobre Noche.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0B6B36"></div><div class="info"><b>Verde Cancha</b><span class="hex">#0B6B36</span><span>El mismo acento en modo claro: profundo, césped de estadio. 5.9:1 sobre Cal AA holgado.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#9BA398"></div><div class="info"><b>Grafito Claro</b><span class="hex">#9BA398</span><span>Texto secundario sobre Noche. 7.0:1.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#666C63"></div><div class="info"><b>Grafito Oscuro</b><span class="hex">#666C63</span><span>Texto secundario sobre Cal. 4.9:1.</span></div></div>
+    </div>
+    <p class="rv" style="margin-top:22px;max-width:46em;color:var(--graf-claro);font-size:15px">El verde es césped y es terminal: fútbol y código comparten color sin forzar nada. Y es el 5% del sistema un tablero donde todo brilla no destaca nada. Todos los pares verificados contra WCAG 2.1.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Tipografía</h2></div>
+    <div class="spec rv">
+      <div class="spec-row"><span class="lbl mono">Display · 68% / 780</span><span class="t-display">Se juega en serio<span class="cursor" style="width:.4em;height:.72em"></span></span></div>
+      <div class="spec-row"><span class="lbl mono">Título · 100% / 640</span><span class="t-h1">Construimos lo que funciona. Contamos lo que se queda.</span></div>
+      <div class="spec-row"><span class="lbl mono">Texto · 100% / 400</span><span class="t-body">Archivo, la grotesca variable de Omnibus-Type, se queda de la V1: rinde en todo y es tipografía latinoamericana en un estudio latinoamericano. Lo que cambia es el registro: el display ahora es condensado y pesado la letra de la camiseta, del marcador, del cartel de partido.</span></div>
+      <div class="spec-row"><span class="lbl mono">HUD · Plex Mono</span><span class="t-hud">Kickoff 09:00 — Entrega 22.08 — Marcador 2—0 — proyecto_07/consola</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Recursos gráficos</h2></div>
+    <div class="recurso rv">
+      <div class="rec-tile">
+        <div class="rec-visual">
+          <svg viewBox="0 0 200 110">
+            <line x1="100" y1="6" x2="100" y2="104" stroke="#F4F3EC" stroke-opacity=".5" stroke-width="1.2"/>
+            <circle cx="100" cy="55" r="30" fill="none" stroke="#F4F3EC" stroke-opacity=".5" stroke-width="1.2"/>
+            <circle cx="100" cy="55" r="2.4" fill="#48E27B"/>
+            <path d="M6 20 A18 18 0 0 1 24 2" fill="none" stroke="#F4F3EC" stroke-opacity=".5" stroke-width="1.2"/>
+            <path d="M194 90 A18 18 0 0 1 176 108" fill="none" stroke="#F4F3EC" stroke-opacity=".5" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <p><b>Las marcas de cancha.</b> Círculo central, línea de medio campo y arco de córner en blanco de cal: el sistema de divisores y marcos del layout. Cualquier colombiano lo reconoce sin pensar; nadie más del gremio lo tiene.</p>
+      </div>
+      <div class="rec-tile">
+        <div class="rec-visual">
+          <div class="hud" style="width:80%"><div style="text-align:center; font-stretch:68%; font-weight:760; text-transform:uppercase; font-size:26px">Lo importante</div></div>
+        </div>
+        <p><b>Los corchetes de HUD.</b> Las esquinas de selección de las interfaces de juego encuadran la cifra, el proyecto o el botón que importa. Es el "mira esto" del sistema. Siempre en verde, nunca más de uno por pantalla.</p>
+      </div>
+      <div class="rec-tile">
+        <div class="rec-visual">
+          <div class="marcador-demo">
+            P1 · J. RUEDA <span class="v">████████░░</span><br>
+            P2 · J.D. LÓPEZ <span class="v">█████████░</span><br>
+            PROYECTO_07 <span class="v">— EN CURSO</span>
+          </div>
+        </div>
+        <p><b>El marcador.</b> Todo dato vive en Plex Mono estilo tablero: fundadores como jugadores, fases como tiempos de partido, créditos de video como pantalla de resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>El proceso como partido</h2></div>
+    <div class="proceso rv">
+      <div class="fase"><span class="n">F—01</span><b>Kickoff</b><span>Qué se juega, contra qué, con qué presupuesto.</span></div>
+      <div class="fase"><span class="n">F—02</span><b>Primer tiempo</b><span>Diseño y construcción. Trabajo denso, poco ruido.</span></div>
+      <div class="fase"><span class="n">F—03</span><b>Entretiempo</b><span>Revisión con el cliente. Se ajusta la táctica.</span></div>
+      <div class="fase"><span class="n">F—04</span><b>Segundo tiempo</b><span>Producción final y ajustes.</span></div>
+      <div class="fase"><span class="n">F—05</span><b>Pitazo final</b><span>Entrega, con todo documentado.</span></div>
+      <div class="fase"><span class="n">F—06</span><b>Partido de vuelta</b><span>Mantenimiento y soporte. La vuelta gana la serie.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Aplicaciones</h2></div>
+    <div class="apps">
+      <div class="app-frame rv">
+        <span class="mono">Tarjeta · 86×54 mm</span>
+        <div class="tarjetas">
+          <div class="tarjeta">
+            <span class="mono" style="color:var(--terminal);font-size:9px">&gt; en línea_</span>
+            <div><div class="lm">Consola<span class="cursor" style="width:.4em;height:.72em"></span></div><div class="lm-sub" style="font-size:8px;margin-top:2px">Estudio</div></div>
+          </div>
+          <div class="tarjeta clara">
+            <div class="nombre">Juan David López <span class="mono" style="font-size:9px;color:var(--cancha)">· P2</span></div>
+            <div class="mono" style="font-size:9px; line-height:2">consola.studio<br>hola@consola.studio<br>+57 ___ ___ ____</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-frame rv">
+        <span class="mono">Post · 1080×1080</span>
+        <div class="ig">
+          <div class="arco"></div>
+          <span class="mono" style="color:var(--terminal)">Manifiesto / 01</span>
+          <p class="frase">Aprendimos <em>sin tutorial.</em></p>
+          <div class="pie"><span class="lm" style="font-size:14px">Consola<span class="cursor" style="width:5px;height:10px"></span></span><span class="mono">P1 · P2</span></div>
+        </div>
+      </div>
+      <div class="app-frame rv" style="grid-column:1/-1">
+        <span class="mono">Web · encabezado</span>
+        <div class="webhero">
+          <div class="chrome"><i></i><i></i><i></i></div>
+          <div class="nav"><span class="lm">Consola<span class="cursor vivo" style="width:6px;height:12px"></span></span><div class="links mono" style="font-size:10px">Trabajo · Estudio · Contacto</div></div>
+          <div class="cuerpo">
+            <div class="medio-campo"></div>
+            <h3>Construimos lo que funciona. <em>Contamos lo que se queda.</em></h3>
+            <a class="cta" href="#" onclick="return false">&gt; Ver el trabajo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Siguientes pasos</h2></div>
+    <div class="pasos rv">
+      <div class="paso"><span class="n">P—01</span><p><b>Comprar dominios hoy:</b> consola.studio (principal), estudioconsola.co y estudioconsola.com (defensivos). La verificación fue por DNS: confirmar en el registrador al comprar.</p></div>
+      <div class="paso"><span class="n">P—02</span><p><b>Antecedentes en la SIC</b> (sipi.sic.gov.co) y registro de marca en clases 35, 41 y 42.</p></div>
+      <div class="paso"><span class="n">P—03</span><p><b>Asegurar usuarios</b> @consola.estudio / @consolaestudio en Instagram, TikTok, YouTube y LinkedIn el mismo día.</p></div>
+      <div class="paso"><span class="n">P—04</span><p><b>Fase 3:</b> sistema de diseño documentado y la web del estudio con sus tres primeros casos.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">Consola Estudio — Identidad V2.0</span>
+    <span class="mono">Pitazo final · P1 · P2 · Julio 2026</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.12});
+  document.querySelectorAll('.rv').forEach((el,i) => { el.style.transitionDelay = (i%4)*60+'ms'; io.observe(el); });
+  setTimeout(() => document.querySelectorAll('.rv:not(.in)').forEach(el => el.classList.add('in')), 1600);
+</script>
+</body>
+</html>

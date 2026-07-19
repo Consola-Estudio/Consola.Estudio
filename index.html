@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consola Estudio</title>
+<meta name="description" content="Estudio creativo de dos: construimos webs y sistemas que funcionan, y producimos el video, la foto y el contenido que los cuenta. Colombia.">
+<meta property="og:title" content="Consola Estudio">
+<meta property="og:description" content="Construimos lo que funciona. Contamos lo que se queda.">
+<meta name="theme-color" content="#121712">
+<!-- =================================================================
+     MEDICIÓN Y ANALÍTICA
+     -----------------------------------------------------------------
+     1) Google Analytics 4 — reemplazar G-XXXXXXXXXX por el ID real
+     2) Consent Mode v2 arranca con TODO denegado; el aviso de cookies
+        lo enciende solo si el usuario acepta.
+     3) Para añadir otras herramientas (Meta Pixel, Hotjar, Clarity,
+        Google Ads, Tag Manager), pegar sus scripts justo después del
+        bloque de gtag('consent', ...) con el mismo patrón: cargar
+        siempre, disparar solo si hay consentimiento (ver consola.js).
+     ================================================================= -->
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  // Por defecto: nada de tracking hasta que el usuario decida
+  gtag('consent','default',{
+    ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',
+    analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted'
+  });
+  gtag('js',new Date());
+  gtag('config','G-XXXXXXXXXX',{anonymize_ip:true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<link rel="stylesheet" href="estilos.css?v=10">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121712'/><rect x='9' y='8' width='14' height='16' fill='%2348E27B'/></svg>">
+</head>
+<body>
+
+<!-- Iconos de redes: se dibujan UNA vez aquí como "symbol" y cada botón
+     los reutiliza con <use>. Así el resto del código queda corto. -->
+<svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+</svg>
+
+<!-- Fondo vivo: dos halos que derivan lento, costo casi cero -->
+<div class="fondo-vivo" aria-hidden="true"><i></i><i></i></div>
+
+<!-- Intro: el logo se tipea y el telón se va (una vez por visita) -->
+<div class="intro" data-intro aria-hidden="true">
+  <span class="cond"><span data-intro-texto></span><span class="cursor vivo"></span></span>
+</div>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="#inicio">CONSOLA<span class="cursor vivo" aria-hidden="true"></span></a>
+    <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu-principal" aria-label="Menú">
+      <i></i><i></i><i></i>
+    </button>
+    <ul id="menu-principal" data-menu>
+      <li><a href="#trabajo" data-i18n="nav_trabajo">Trabajo</a></li>
+      <li><a href="servicios.html" data-i18n="nav_servicios">Servicios</a></li>
+      <li><a href="#proceso" data-i18n="nav_proceso">Proceso</a></li>
+      <li><a href="#estudio" data-i18n="nav_estudio">Estudio</a></li>
+      <li><a href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="circulo-central" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="kicker mono rv" data-i18n="hero_kicker">&gt; estudio creativo_</p>
+    <h1 class="rv" data-i18n-html="hero_h1">Construimos lo que funciona. <em>Contamos lo que se queda.</em></h1>
+    <p class="sub rv" data-i18n="hero_sub">Somos un estudio de dos donde los dos jugamos en todas las posiciones: web, video, diseño, transmisiones. Todo tu proyecto sale del mismo criterio, hecho por las mismas manos que te contestan el teléfono.</p>
+    <div class="acciones rv">
+      <a class="btn" href="#trabajo" data-i18n="hero_btn1">&gt; Ver el trabajo</a>
+      <a class="btn secundario" href="#contacto" data-i18n="hero_btn2">Hablemos</a>
+    </div>
+    <div class="marcador rv">
+      <span class="mono">P1 J.A. Rueda</span>
+      <span class="mono">P2 J.D. López</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="trabajo">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2 data-i18n="sec_trabajo">Trabajo</h2></div>
+
+    <a class="caso rv" href="caso-consola.html" data-caso-01>
+      <div class="info">
+        <span class="mono" data-i18n="caso1_mono">Proyecto_01 Identidad de marca</span>
+        <div>
+          <h3>Consola</h3>
+          <p data-i18n="caso1_desc">Nuestro primer cliente fuimos nosotros. Estrategia de marca, naming con verificación de dominios y registro, sistema visual completo y esta web. Aquí está el proceso entero, con sus dos versiones descartadas incluidas.</p>
+        </div>
+        <span class="mono" style="color:var(--graf-claro)" data-i18n="caso1_ver">&gt; Ver el caso</span>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="hud"><span class="cond" style="font-size:clamp(30px,4.5vw,52px)">Consola<span class="cursor"></span></span></div>
+      </div>
+    </a>
+
+    <div class="caso-pendiente rv">
+      <span class="mono">Proyecto_02</span>
+      <span style="font-size:14px" data-i18n="caso2">En curso. El marcador se actualiza cuando haya pitazo final.</span>
+      <span class="mono verde parpadeo" data-i18n="caso2_estado">jugando_</span>
+    </div>
+    <div class="caso-pendiente rv">
+      <span class="mono">Proyecto_03</span>
+      <span style="font-size:14px" data-i18n="caso3">¿Tu proyecto? El puesto está libre.</span>
+      <a class="mono" href="#contacto" style="text-decoration:none" data-i18n="caso3_btn">&gt; Aplicar</a>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2 data-i18n="sec_servicios">Servicios</h2></div>
+    <div class="servicios">
+      <div class="servicio rv">
+        <span class="mono" data-i18n="serv1_mono">Necesidad 1</span>
+        <h3 data-i18n="serv1_h3">Que te encuentren</h3>
+        <ul>
+          <li data-i18n="serv1_1">Páginas web y tiendas</li>
+          <li data-i18n="serv1_2">Diseño de interfaces (UI/UX)</li>
+          <li data-i18n="serv1_3">Prototipado en Figma</li>
+          <li data-i18n="serv1_4">Identidad de marca y branding</li>
+        </ul>
+      </div>
+      <div class="servicio rv">
+        <span class="mono" data-i18n="serv2_mono">Necesidad 2</span>
+        <h3 data-i18n="serv2_h3">Que te vean bien</h3>
+        <ul>
+          <li data-i18n="serv2_1">Video profesional y edición</li>
+          <li data-i18n="serv2_2">Fotografía y cobertura de eventos</li>
+          <li data-i18n="serv2_3">Transmisiones en vivo</li>
+          <li data-i18n="serv2_4">Animación 3D y motion graphics</li>
+          <li data-i18n="serv2_5">Contenido para redes y miniaturas</li>
+          <li data-i18n="serv2_6">Producción de audio</li>
+        </ul>
+      </div>
+      <div class="servicio rv">
+        <span class="mono" data-i18n="serv3_mono">Necesidad 3</span>
+        <h3 data-i18n="serv3_h3">Que funcione siempre</h3>
+        <ul>
+          <li data-i18n="serv3_1">Administración de sitios web</li>
+          <li data-i18n="serv3_2">Mantenimiento y actualizaciones</li>
+          <li data-i18n="serv3_3">Soporte técnico</li>
+          <li data-i18n="serv3_4">El partido de vuelta: no entregamos y desaparecemos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ir-a-servicios rv">
+      <div class="cta-texto">
+        <span class="kicker" data-i18n="cta_kicker">Trabajemos juntos</span>
+        <h3 data-i18n-html="cta_titulo">Creamos marcas, experiencias y contenido que dejan huella.</h3>
+        <p data-i18n="cta_sub">Somos un estudio creativo especializado en identidad de marca, desarrollo web, diseño UI/UX y producción audiovisual para empresas, emprendedores y proyectos que buscan diferenciarse.</p>
+      </div>
+      <a class="cta-btn" href="servicios.html">
+        <span data-i18n="cta_btn">ver servicios</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2 data-i18n="sec_proceso">Cómo se juega</h2></div>
+    <div class="proceso rv">
+      <div class="fase"><span class="n">F—01</span><b data-i18n="fase1_t">Kickoff</b><span data-i18n="fase1_d">Qué se juega, contra qué, con qué presupuesto.</span></div>
+      <div class="fase"><span class="n">F—02</span><b data-i18n="fase2_t">Primer tiempo</b><span data-i18n="fase2_d">Diseño y construcción. Trabajo denso, poco ruido.</span></div>
+      <div class="fase"><span class="n">F—03</span><b data-i18n="fase3_t">Entretiempo</b><span data-i18n="fase3_d">Revisión contigo. Se ajusta la táctica antes de seguir.</span></div>
+      <div class="fase"><span class="n">F—04</span><b data-i18n="fase4_t">Segundo tiempo</b><span data-i18n="fase4_d">Producción final y ajustes.</span></div>
+      <div class="fase"><span class="n">F—05</span><b data-i18n="fase5_t">Pitazo final</b><span data-i18n="fase5_d">Entrega, con todo documentado y en tus manos.</span></div>
+      <div class="fase"><span class="n">F—06</span><b data-i18n="fase6_t">Partido de vuelta</b><span data-i18n="fase6_d">Mantenimiento y soporte. Seguimos en la cancha.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="estudio">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2 data-i18n="sec_estudio">El estudio</h2></div>
+    <p class="rv" style="color:var(--graf-claro);max-width:40em;margin-bottom:var(--e-3)" data-i18n="estudio_intro">Aquí no hay "el de sistemas" y "el de cámara". Los dos programamos, grabamos, editamos y transmitimos. Cada uno tiene su posición natural, pero cualquiera cubre la cancha completa, y en un evento en vivo eso vale oro: siempre hay relevo.</p>
+    <div class="estudio-grid">
+      <div class="jugador rv">
+        <div class="ficha"><h3>Javier Antonio Rueda</h3><span class="mono rol">P1</span></div>
+        <p data-i18n="jugador1">Posición natural: Desarrollo. Programador autodidacta, lector, diseña interfaces, graba y edita. El que propone la jugada arriesgada cuando el proyecto la pide.</p>
+        <!-- FOTO PENDIENTE -->
+      </div>
+      <div class="jugador rv">
+        <div class="ficha"><h3>Juan David López</h3><span class="mono rol">P2</span></div>
+        <p data-i18n="jugador2">Posición natural: Multimedia. Estudia ingeniería multimedia, hace video, foto, sonido, programa, animación y transmisiones en vivo. Aprendió el resto como se aprende de verdad: haciéndolo.</p>
+        <!-- FOTO PENDIENTE -->
+      </div>
+    </div>
+    <div class="manifiesto rv">
+      <div class="arco" aria-hidden="true"></div>
+      <p class="frase" data-i18n-html="manifiesto">Aprendimos <em>sin tutorial.</em></p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2 data-i18n="sec_contacto">Contacto</h2></div>
+    <div class="contacto-grid">
+      <div class="prosa rv">
+        <p data-i18n-html="contacto_p1"><b>Te contesta uno de los dos.</b> No hay asesores, no hay tickets, no hay "su llamada es importante para nosotros".</p>
+        <p data-i18n="contacto_p2">Cuéntanos qué necesitas en dos líneas. Si no sabes qué necesitas, también sirve: para eso es el kickoff.</p>
+        <div class="canales">
+          <a href="mailto:hola.consola.info@gmail.com">hola.consola.info@gmail.com</a>
+          <a href="https://wa.me/573229426949" target="_blank" rel="noopener">whatsapp +57 3229426949</a>
+        </div>
+      </div>
+      <form class="rv" data-form-contacto novalidate>
+        <label><span data-i18n="form_nombre">Nombre</span>
+          <input type="text" name="nombre" required autocomplete="name">
+        </label>
+        <label><span data-i18n="form_correo">Correo</span>
+          <input type="email" name="correo" required autocomplete="email">
+        </label>
+        <label><span data-i18n="form_mensaje">Qué necesitas</span>
+          <textarea name="mensaje" required data-i18n-attr="placeholder|form_ejemplo" placeholder="Ej: mi página web me da pena y no aparezco en Google."></textarea>
+        </label>
+        <label class="acepta" style="flex-direction:row;align-items:flex-start;gap:8px;text-transform:none;letter-spacing:0;font-family:var(--f-texto);font-size:13px;color:var(--graf-claro)">
+          <input type="checkbox" name="acepta" required style="width:auto;margin-top:4px">
+          <span data-i18n-html="form_acepta">He leído y acepto la <a href="politica-privacidad.html" style="color:var(--terminal)">política de privacidad</a>.</span>
+        </label>
+        <button class="btn" type="submit" data-i18n="form_btn">&gt; Enviar</button>
+        <p class="mono" style="color:var(--graf-oscuro);letter-spacing:.08em" data-form-nota></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-info">
+      <span class="mono">Consola Estudio_</span>
+      <span class="footer-copy" data-i18n="footer_copy">&copy; 2026 Consola Estudio. Todos los derechos reservados.</span>
+      <div class="footer-legales">
+        <a href="politica-privacidad.html" data-i18n="footer_privacidad">Política de privacidad</a>
+        <a href="terminos.html" data-i18n="footer_terminos">Términos</a>
+        <a href="cookies.html" data-i18n="footer_cookies">Cookies</a>
+      </div>
+      <div class="footer-firma">
+        <span class="mono">Desarrollado por</span>
+        <a class="firma-consola" href="index.html">CONSOLA<span class="cursor" aria-hidden="true"></span>.estudio</a>
+      </div>
+    </div>
+    <div class="footer-redes">
+      <a href="https://wa.me/573229426949" target="_blank" rel="noopener" aria-label="WhatsApp" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-whatsapp"/></svg></a>
+      <!-- Redes ocultas por ahora. Para reactivarlas: quitar los comentarios
+           y reemplazar # por la URL real de cada cuenta.
+      <a href="#" aria-label="Instagram" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-instagram"/></svg></a>
+      <a href="#" aria-label="TikTok" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-tiktok"/></svg></a>
+      <a href="#" aria-label="Facebook" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-facebook"/></svg></a>
+      <a href="#" aria-label="YouTube" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-youtube"/></svg></a>
+      -->
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573229426949" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg width="36" height="36" fill="#121712"><use href="#i-whatsapp"/></svg>
+</a>
+
+<!-- Aviso de cookies (se muestra si no hay decisión guardada) -->
+<div class="cookies-aviso" data-cookies role="dialog" aria-label="Cookies">
+  <p data-i18n-html="cookies_aviso">Usamos cookies para medir cuántas personas visitan la web y qué páginas ven. Nada más. <a href="cookies.html">Detalles</a>.</p>
+  <div class="acciones">
+    <button class="btn" data-cookies-aceptar data-i18n="cookies_aceptar">Aceptar</button>
+    <button class="btn secundario" data-cookies-rechazar data-i18n="cookies_rechazar">Rechazar</button>
+  </div>
+</div>
+<script src="consola.js?v=10"></script>
+</body>
+</html>

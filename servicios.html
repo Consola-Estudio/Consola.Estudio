@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios y precios | Consola.Estudio</title>
+<meta name="description" content="Qué hacemos, qué incluye cada servicio y cuánto cuesta. Web, tiendas, marca, video, eventos, transmisiones y soporte. Precios claros desde el arranque.">
+<meta property="og:title" content="Servicios y precios | Consola Estudio">
+<meta property="og:description" content="Qué hacemos, qué incluye y cuánto cuesta. Sin letra pequeña.">
+<meta name="theme-color" content="#121712">
+<!-- Analítica: ver comentario extenso en index.html -->
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  gtag('consent','default',{
+    ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',
+    analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted'
+  });
+  gtag('js',new Date());
+  gtag('config','G-XXXXXXXXXX',{anonymize_ip:true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<link rel="stylesheet" href="estilos.css?v=10">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121712'/><rect x='9' y='8' width='14' height='16' fill='%2348E27B'/></svg>">
+</head>
+<body>
+
+<!-- Iconos de redes (sprite reutilizable) -->
+<svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+</svg>
+
+<div class="fondo-vivo" aria-hidden="true"><i></i><i></i></div>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="index.html">CONSOLA<span class="cursor vivo" aria-hidden="true"></span></a>
+    <button class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu-principal" aria-label="Menú">
+      <i></i><i></i><i></i>
+    </button>
+    <ul id="menu-principal" data-menu>
+      <li><a href="index.html#trabajo" data-i18n="nav_trabajo">Trabajo</a></li>
+      <li><a href="servicios.html" data-i18n="nav_servicios">Servicios</a></li>
+      <li><a href="index.html#proceso" data-i18n="nav_proceso">Proceso</a></li>
+      <li><a href="index.html#estudio" data-i18n="nav_estudio">Estudio</a></li>
+      <li><a href="#hablemos" data-i18n="nav_contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="pagina-hero">
+  <div class="wrap">
+    <p class="kicker mono rv" data-i18n="servicios_kicker">&gt; servicios y precios_</p>
+    <h1 class="rv" data-i18n-html="servicios_h1">Qué hacemos, qué incluye y <em style="font-style:normal;color:var(--terminal)">cuánto cuesta.</em></h1>
+    <p class="sub rv" data-i18n="servicios_sub">Sin letra pequeña. Cada precio es un punto de partida: el número exacto sale del kickoff, que es gratis. Si algo no está incluido, aquí lo decimos antes de que preguntes.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- =================================================================
+     CATÁLOGO NUEVO — julio 2026
+     Sin data-i18n en el contenido nuevo por ahora (traducimos cuando
+     Javier confirme la estructura y precios definitivos).
+     PRECIOS DE EJEMPLO: ajustar antes de publicar.
+     WhatsApp: los enlaces prellenan el mensaje con el nombre del pack.
+     ================================================================= -->
+
+<section id="desarrollo-web">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Desarrollo web</h2></div>
+    <p class="sec-intro rv">Sitios rápidos, bonitos y funcionales, sin pagar suscripciones mensuales de plataformas. Tú tienes el control total de tu web. Y cuando esté en línea, no la dejamos sola: el mantenimiento va al lado.</p>
+
+    <div class="packs con-divisor">
+      <article class="pack rv">
+        <span class="kicker">Presencia digital</span>
+        <h3>Básico</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$350.000</span></div>
+        <p class="entrega">Entrega en 2 semanas</p>
+        <ul>
+          <li>Página de una sola sección (landing)</li>
+          <li>Logo y colores de tu negocio</li>
+          <li>Descripción de tu negocio y servicios</li>
+          <li>Botón de contacto directo por WhatsApp</li>
+          <li>Hosting configurado a tu nombre</li>
+          <li>Diseño responsive para celular y PC</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20plan%20Básico%20de%20desarrollo%20web" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Plan%20Básico%20-%20Desarrollo%20web">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv destacado">
+        <span class="pack-badge">Más elegido</span>
+        <span class="kicker">Web completa</span>
+        <h3>Estándar</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$800.000</span></div>
+        <p class="entrega">Entrega en 3 a 4 semanas</p>
+        <ul>
+          <li>Todo lo del Plan Básico</li>
+          <li>Secciones: Inicio, Sobre nosotros, Servicios, Contacto</li>
+          <li>Galería de fotos del negocio</li>
+          <li>Formulario de contacto</li>
+          <li>Optimización básica para Google (SEO)</li>
+          <li>Google Analytics (métricas de visitas)</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20plan%20Estándar%20de%20desarrollo%20web" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Plan%20Estándar%20-%20Desarrollo%20web">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Tienda en línea</span>
+        <h3>Avanzado</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$1.500.000</span></div>
+        <p class="entrega">Entrega en 4 a 6 semanas</p>
+        <ul>
+          <li>Todo lo del Plan Estándar</li>
+          <li>Catálogo de hasta 30 productos con foto y precio</li>
+          <li>Carrito de compras</li>
+          <li>Pasarela de pagos (Wompi, PayU o similar)</li>
+          <li>Gestión de inventario</li>
+          <li>Panel de administración y capacitación</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20plan%20Avanzado%20de%20desarrollo%20web" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Plan%20Avanzado%20-%20Desarrollo%20web">Email</a>
+        </div>
+      </article>
+
+      <div class="pack-divisor" aria-hidden="true"></div>
+
+      <article class="pack rv">
+        <span class="kicker">Después del lanzamiento</span>
+        <h3>Mantenimiento</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$120.000<small>/mes</small></span></div>
+        <p class="entrega">Sin permanencia mínima</p>
+        <ul>
+          <li>Actualizaciones de seguridad</li>
+          <li>Copias de respaldo semanales</li>
+          <li>Cambios menores de contenido</li>
+          <li>Monitoreo de uptime</li>
+          <li>Reporte mensual del sitio</li>
+          <li>Respuesta en menos de 24 h</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20plan%20de%20Mantenimiento%20web" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Mantenimiento%20web">Email</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="marca">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Marca e identidad</h2></div>
+    <p class="sec-intro rv">De lo esencial a lo completo. Elige la profundidad que tu marca necesita ahora.</p>
+    <div class="packs">
+      <article class="pack rv">
+        <span class="kicker">Marca básica</span>
+        <h3>Logo</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$150.000</span></div>
+        <p class="entrega">Entrega en 5 a 7 días</p>
+        <ul>
+          <li>Logo principal + versión secundaria</li>
+          <li>Variaciones en color y monocromo</li>
+          <li>Archivos editables (AI, SVG, PNG, JPG)</li>
+          <li>Manual mínimo de uso</li>
+          <li>2 rondas de revisión</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20servicio%20de%20Logo" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Diseño%20de%20Logo">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Marca profesional</span>
+        <h3>Identidad visual</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$250.000</span></div>
+        <p class="entrega">Entrega en 1 a 2 semanas</p>
+        <ul>
+          <li>Todo lo del Logo</li>
+          <li>Paleta de colores extendida</li>
+          <li>Tipografía principal y secundaria</li>
+          <li>Aplicaciones básicas (redes, tarjeta)</li>
+          <li>3 rondas de revisión</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20servicio%20de%20Identidad%20visual" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Identidad%20visual">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Guía visual</span>
+        <h3>Brand book básico</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$350.000</span></div>
+        <p class="entrega">Entrega en 2 semanas</p>
+        <ul>
+          <li>Todo lo de Identidad visual</li>
+          <li>Guía de uso de 15 a 20 páginas</li>
+          <li>Plantillas de redes sociales</li>
+          <li>Firma de correo</li>
+          <li>Manual de aplicación</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20Brand%20book%20básico" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Brand%20book%20básico">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Sistema completo</span>
+        <h3>Brand book completo</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$650.000</span></div>
+        <p class="entrega">Entrega en 3 semanas</p>
+        <ul>
+          <li>Investigación y estrategia de marca</li>
+          <li>Naming (si aplica)</li>
+          <li>Sistema visual completo (40+ páginas)</li>
+          <li>Papelería y aplicaciones</li>
+          <li>Guía de tono y voz</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20Brand%20book%20completo" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Brand%20book%20completo">Email</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Video y eventos</h2></div>
+    <p class="sec-intro rv">Producción propia: grabamos, editamos y transmitimos con equipo profesional y dos operadores.</p>
+    <div class="packs">
+      <article class="pack rv">
+        <span class="kicker">Video con equipo propio</span>
+        <h3>Grabación y cobertura</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$400.000</span></div>
+        <p class="entrega">Entrega en 5 a 7 días</p>
+        <ul>
+          <li>Preproducción</li>
+          <li>Grabación con equipo profesional</li>
+          <li>Dos operadores de cámara</li>
+          <li>Edición con correcciones</li>
+          <li>Música con licencia</li>
+          <li>Formatos para web y redes</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20Grabación%20y%20cobertura%20de%20video" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Grabación%20y%20cobertura">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Traes tu material</span>
+        <h3>Solo edición</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$130.000</span></div>
+        <p class="entrega">Entrega en 3 a 5 días</p>
+        <ul>
+          <li>Revisión y organización del material</li>
+          <li>Edición hasta 5 minutos</li>
+          <li>Corrección de color</li>
+          <li>Sonido y música con licencia</li>
+          <li>Titulares y transiciones</li>
+          <li>Entrega en HD</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20servicio%20de%20Solo%20edición%20de%20video" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Solo%20edición%20de%20video">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">En directo</span>
+        <h3>Transmisión en vivo</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$400.000</span></div>
+        <p class="entrega">Cotización por evento</p>
+        <ul>
+          <li>Setup multicámara</li>
+          <li>Mezcla de audio en directo</li>
+          <li>Gráficos en pantalla</li>
+          <li>Emisión a YouTube, Facebook, Twitch o similares</li>
+          <li>Prueba técnica previa</li>
+          <li>Soporte durante el evento</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20una%20Transmisión%20en%20vivo" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Transmisión%20en%20vivo">Email</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="animacion">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Animación y 3D</h2></div>
+    <p class="sec-intro rv">Movimiento para tu marca, tus productos y tus piezas.</p>
+    <div class="packs">
+      <article class="pack rv">
+        <span class="kicker">Animación 2D</span>
+        <h3>Motion graphics</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$100.000</span></div>
+        <p class="entrega">Entrega en 3 a 5 días</p>
+        <ul>
+          <li>Guion visual</li>
+          <li>Animación de hasta 30 segundos</li>
+          <li>Música y efectos con licencia</li>
+          <li>2 rondas de revisión</li>
+          <li>Formatos para web y redes</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20Motion%20graphics" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Motion%20graphics">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Marca en movimiento</span>
+        <h3>Logo 3D animado</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$150.000</span></div>
+        <p class="entrega">Entrega en 5 a 7 días</p>
+        <ul>
+          <li>Modelado 3D de tu logo</li>
+          <li>Animación de entrada</li>
+          <li>Materiales y luces</li>
+          <li>Renderizado en HD</li>
+          <li>Formatos MP4 y MOV</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20un%20Logo%203D%20animado" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Logo%203D%20animado">Email</a>
+        </div>
+      </article>
+
+      <article class="pack rv">
+        <span class="kicker">Producto en 3D</span>
+        <h3>Animación 3D de producto</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$220.000</span></div>
+        <p class="entrega">Entrega en 1 a 2 semanas</p>
+        <ul>
+          <li>Modelado 3D del producto</li>
+          <li>Texturas y materiales realistas</li>
+          <li>Animación de rotación o explosión</li>
+          <li>Renderizado HD</li>
+          <li>Formatos MP4 y stills PNG</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20Animación%203D%20de%20producto" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Animación%203D%20de%20producto">Email</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contenido">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2>Contenido para redes</h2></div>
+    <p class="sec-intro rv">Producción vertical y horizontal para TikTok, Instagram Reels, YouTube Shorts y más. Formatos adaptados a cada plataforma.</p>
+    <div class="packs packs-solo">
+      <article class="pack rv">
+        <span class="kicker">Plan mensual</span>
+        <h3>Contenido para redes</h3>
+        <div class="precio"><span class="desde">desde</span><span class="valor">$400.000<small>/mes</small></span></div>
+        <p class="entrega">Sin permanencia mínima</p>
+        <ul>
+          <li>Calendario editorial del mes</li>
+          <li>8 a 12 piezas gráficas</li>
+          <li>4 a 6 reels o videos cortos editados</li>
+          <li>Formatos: TikTok, Reels, Shorts, vertical</li>
+          <li>Alternativa: $50.000 por pieza suelta</li>
+        </ul>
+        <div class="acciones-pack">
+          <a class="btn-consulta" href="https://wa.me/573229426949?text=Hola,%20me%20interesa%20el%20plan%20de%20contenido%20para%20redes" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn-email" href="mailto:hola.consola.info@gmail.com?subject=Contenido%20para%20redes">Email</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="reglas-pago" style="padding-top:0">
+  <div class="wrap">
+    <div class="reglas-pago rv">
+      <h3>Cómo se paga</h3>
+      <ul>
+        <li><b>50% al arrancar, 50% al entregar.</b> Sin sorpresas al final.</li>
+        <li><b>Dominio y hosting los pones tú.</b> Te decimos exacto qué comprar (.com, .co, .studio) y en dónde. Así queda a tu nombre y no dependes de nadie.</li>
+        <li><b>¿Un ajuste después del pitazo final?</b> Servicios sueltos desde $30.000. O contrata el plan de mantenimiento.</li>
+      </ul>
+    </div>
+    <p class="tarifas-nota rv" data-i18n="servicios_nota">Todos los precios son en pesos colombianos y son punto de partida: el número exacto depende del tamaño de tu proyecto y sale del kickoff, que es gratis y sin compromiso. Si tu presupuesto no alcanza para lo que pides, te lo decimos de frente y buscamos qué sí se puede.</p>
+  </div>
+</section>
+
+<section id="comentarios">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num"></span><h2 data-i18n="sec_comentarios">Lo que dicen</h2></div>
+    <!-- COMENTARIOS DE EJEMPLO: reemplazar por citas reales -->
+    <div class="comentarios">
+      <blockquote class="comentario rv">
+        <p>"Me entregaron la página antes de lo acordado y me explicaron cómo cambiar yo mismo los precios. Nadie me había explicado nada antes."</p>
+        <footer><cite>Nombre Apellido</cite><span class="de">Página web</span></footer>
+      </blockquote>
+      <blockquote class="comentario rv">
+        <p>"El video quedó mejor de lo que imaginé y lo tuve listo para el lanzamiento. Responden rápido y hablan claro."</p>
+        <footer><cite>Nombre Apellido</cite><span class="de">Video de producto</span></footer>
+      </blockquote>
+      <blockquote class="comentario rv">
+        <p>"La transmisión salió sin un solo corte. Probaron todo el día anterior y el día del evento no tuve que preocuparme por nada."</p>
+        <footer><cite>Nombre Apellido</cite><span class="de">Transmisión en vivo</span></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="hablemos" style="border-bottom:none">
+  <div class="wrap">
+    <div class="hablemos rv">
+      <h2 data-i18n-html="hablemos_h2">Hablemos de tu <em>proyecto</em></h2>
+      <p class="sub" data-i18n="hablemos_sub">Escríbenos y cuéntanos lo que necesitas. Sin compromiso.</p>
+      <a class="correo-grande" href="mailto:hola.consola.info@gmail.com">hola.consola.info@gmail.com</a>
+      <p class="sub" data-i18n="hablemos_otros">También puedes escribirnos por:</p>
+      <div class="otros">
+        <a class="btn secundario" href="https://wa.me/573229426949" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Otras redes ocultas por ahora. Para reactivarlas: quitar los comentarios
+             y reemplazar # por la URL real de cada cuenta.
+        <a class="btn secundario" href="#">Instagram DM</a>
+        <a class="btn secundario" href="#">Facebook</a>
+        -->
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-info">
+      <span class="mono">Consola Estudio_</span>
+      <span class="footer-copy" data-i18n="footer_copy">&copy; 2026 Consola Estudio. Todos los derechos reservados.</span>
+      <div class="footer-legales">
+        <a href="politica-privacidad.html" data-i18n="footer_privacidad">Política de privacidad</a>
+        <a href="terminos.html" data-i18n="footer_terminos">Términos</a>
+        <a href="cookies.html" data-i18n="footer_cookies">Cookies</a>
+      </div>
+      <div class="footer-firma">
+        <span class="mono">Desarrollado por</span>
+        <a class="firma-consola" href="index.html">CONSOLA<span class="cursor" aria-hidden="true"></span>.estudio</a>
+      </div>
+    </div>
+    <div class="footer-redes">
+      <a href="https://wa.me/573229426949" target="_blank" rel="noopener" aria-label="WhatsApp" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-whatsapp"/></svg></a>
+      <!-- Redes ocultas por ahora. Para reactivarlas: quitar los comentarios
+           y reemplazar # por la URL real de cada cuenta.
+      <a href="#" aria-label="Instagram" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-instagram"/></svg></a>
+      <a href="#" aria-label="TikTok" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-tiktok"/></svg></a>
+      <a href="#" aria-label="Facebook" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-facebook"/></svg></a>
+      <a href="#" aria-label="YouTube" class="red-social"><svg width="20" height="20" fill="currentColor"><use href="#i-youtube"/></svg></a>
+      -->
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/573229426949" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg width="36" height="36" fill="#121712"><use href="#i-whatsapp"/></svg>
+</a>
+
+<div class="cookies-aviso" data-cookies role="dialog" aria-label="Cookies">
+  <p data-i18n-html="cookies_aviso">Usamos cookies para medir cuántas personas visitan la web y qué páginas ven. Nada más. <a href="cookies.html">Detalles</a>.</p>
+  <div class="acciones">
+    <button class="btn" data-cookies-aceptar data-i18n="cookies_aceptar">Aceptar</button>
+    <button class="btn secundario" data-cookies-rechazar data-i18n="cookies_rechazar">Rechazar</button>
+  </div>
+</div>
+<script src="consola.js?v=10"></script>
+</body>
+</html>

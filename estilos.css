@@ -272,6 +272,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:v
   color:var(--terminal);font-family:var(--f-mono);font-weight:700;
 }
 .reglas-pago b{color:var(--cal);font-weight:620}
+.reglas-pago a{color:var(--terminal);text-decoration:underline;text-underline-offset:3px}
+.reglas-pago a:hover{color:var(--cal)}
 
 /* ---------- páginas legales ---------- */
 .legal .wrap{max-width:780px}

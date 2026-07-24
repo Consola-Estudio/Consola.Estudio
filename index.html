@@ -31,7 +31,7 @@
   gtag('config','G-XXXXXXXXXX',{anonymize_ip:true});
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<link rel="stylesheet" href="estilos.css?v=11">
+<link rel="stylesheet" href="estilos.css?v=12">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121712'/><rect x='9' y='8' width='14' height='16' fill='%2348E27B'/></svg>">
 </head>
 <body>
@@ -192,14 +192,25 @@
     <p class="rv" style="color:var(--graf-claro);max-width:40em;margin-bottom:var(--e-3)" data-i18n="estudio_intro">Aquí no hay "el de sistemas" y "el de cámara". Los dos programamos, grabamos, editamos y transmitimos. Cada uno tiene su posición natural, pero cualquiera cubre la cancha completa, y en un evento en vivo eso vale oro: siempre hay relevo.</p>
     <div class="estudio-grid">
       <div class="jugador rv">
+        <figure class="retrato">
+          <picture>
+            <source srcset="fotos/javier.webp" type="image/webp">
+            <img src="fotos/javier.jpg" alt="Javier Antonio Rueda" width="800" height="800" loading="lazy" decoding="async">
+          </picture>
+        </figure>
         <div class="ficha"><h3>Javier Antonio Rueda</h3><span class="mono rol">P1</span></div>
         <p data-i18n="jugador1">Posición natural: Desarrollo. Programador autodidacta, lector, diseña interfaces, graba y edita. El que propone la jugada arriesgada cuando el proyecto la pide.</p>
-        <!-- FOTO PENDIENTE -->
       </div>
       <div class="jugador rv">
+        <!-- FOTO PENDIENTE: reemplazar fotos/juan-david.webp y .jpg por la foto real -->
+        <figure class="retrato">
+          <picture>
+            <source srcset="fotos/juan-david.webp" type="image/webp">
+            <img src="fotos/juan-david.jpg" alt="Juan David López" width="800" height="800" loading="lazy" decoding="async">
+          </picture>
+        </figure>
         <div class="ficha"><h3>Juan David López</h3><span class="mono rol">P2</span></div>
         <p data-i18n="jugador2">Posición natural: Multimedia. Estudia ingeniería multimedia, hace video, foto, sonido, programa, animación y transmisiones en vivo. Aprendió el resto como se aprende de verdad: haciéndolo.</p>
-        <!-- FOTO PENDIENTE -->
       </div>
     </div>
     <div class="manifiesto rv">
@@ -231,6 +242,8 @@
         <label><span data-i18n="form_mensaje">Qué necesitas</span>
           <textarea name="mensaje" required data-i18n-attr="placeholder|form_ejemplo" placeholder="Ej: mi página web me da pena y no aparezco en Google."></textarea>
         </label>
+        <!-- Trampa anti-spam: invisible para personas, los bots la llenan -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <label class="acepta" style="flex-direction:row;align-items:flex-start;gap:8px;text-transform:none;letter-spacing:0;font-family:var(--f-texto);font-size:13px;color:var(--graf-claro)">
           <input type="checkbox" name="acepta" required style="width:auto;margin-top:4px">
           <span data-i18n-html="form_acepta">He leído y acepto la <a href="politica-privacidad.html" style="color:var(--terminal)">política de privacidad</a>.</span>
@@ -285,6 +298,6 @@
     <button class="btn secundario" data-cookies-rechazar data-i18n="cookies_rechazar">Rechazar</button>
   </div>
 </div>
-<script src="consola.js?v=11"></script>
+<script src="consola.js?v=12"></script>
 </body>
 </html>

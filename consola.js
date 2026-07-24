@@ -173,25 +173,46 @@ setTimeout(() => {
 // =========================================================================
 //  6. FORMULARIO DE CONTACTO
 // =========================================================================
-// Correo del estudio (personal de Javier mientras se estrena el dominio).
+// Correo del estudio.
 const CORREO_ESTUDIO = 'hola.consola.info@gmail.com';
 
-// Endpoint para enviar el formulario SIN backend propio.
-// Opciones probadas (elegir una, crear cuenta y pegar el endpoint aquí):
-//   • Formspree:   https://formspree.io/f/xxxxxxxx      (50 envíos/mes gratis)
-//   • Web3Forms:   https://api.web3forms.com/submit    (ilimitado, gratis)
-//   • FormSubmit:  https://formsubmit.co/hola.consola.info@gmail.com  (gratis)
-// Mientras esté en blanco, el formulario cae al modo mailto: abre el
-// programa de correo del visitante con el mensaje ya escrito.
-const FORM_ENDPOINT = ''; // ← pegar aquí el endpoint cuando exista
+// -------------------------------------------------------------------------
+// WEB3FORMS: envía el formulario a nuestro correo sin backend propio.
+// No requiere dominio ni tarjeta. Envíos ilimitados en el plan gratis.
+//
+// CÓMO OBTENER LA CLAVE (2 minutos):
+//   1. Entrar a https://web3forms.com
+//   2. Escribir hola.consola.info@gmail.com en "Create Access Key"
+//   3. Revisar el correo y copiar la clave que llega
+//   4. Pegarla abajo reemplazando CLAVE_PENDIENTE
+//   5. Descomentar el proveedor en politica-privacidad.html (hay un
+//      comentario marcado ahí con el texto listo)
+//
+// Mientras la clave siga siendo CLAVE_PENDIENTE, el formulario cae al modo
+// mailto: abre el correo del visitante con el mensaje ya escrito.
+// -------------------------------------------------------------------------
+const WEB3FORMS_KEY = 'CLAVE_PENDIENTE';
+const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 
-function t(k){ // helper para traducir mensajes del formulario
+// Mensajes del formulario. Viven aquí y no en traducciones.js porque ese
+// archivo está dormido desde que el sitio quedó solo en español.
+const MENSAJES = {
+  form_enviando:     '> enviando...',
+  form_ok:           '> mensaje enviado, te escribimos en menos de 24 h',
+  form_error:        '> algo falló, escríbenos directo a ' + CORREO_ESTUDIO,
+  form_mailto:       '> se abrió tu correo con el mensaje listo',
+  form_acepta_falta: '> primero acepta la política de privacidad'
+};
+function t(k){
   const lang = document.documentElement.lang || 'es';
-  return (window.TRADUCCIONES?.[lang]?.[k]) || k;
+  return (window.TRADUCCIONES?.[lang]?.[k]) || MENSAJES[k] || k;
 }
 
 const form = document.querySelector('[data-form-contacto]');
 if (form) {
+  const boton = form.querySelector('button[type="submit"]');
+  const textoBotonOriginal = boton ? boton.textContent : '';
+
   form.addEventListener('submit', async ev => {
     ev.preventDefault();
     const nota = form.querySelector('[data-form-nota]');
@@ -202,19 +223,46 @@ if (form) {
       return;
     }
 
-    // Modo 1: hay endpoint → POST silencioso, sin salir de la web
-    if (FORM_ENDPOINT) {
+    // Trampa anti-spam: si el campo oculto viene lleno, es un bot.
+    // Fingimos éxito para no darle pistas y no enviamos nada.
+    if (datos.get('botcheck')) {
+      form.reset();
+      nota.textContent = t('form_ok');
+      return;
+    }
+
+    // Modo 1: hay clave → POST a Web3Forms, sin salir de la web
+    if (WEB3FORMS_KEY !== 'CLAVE_PENDIENTE') {
+      const nombre = datos.get('nombre');
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        subject: 'Kickoff: ' + nombre,
+        from_name: 'Web Consola Estudio',
+        nombre: nombre,
+        correo: datos.get('correo'),
+        mensaje: datos.get('mensaje'),
+        replyto: datos.get('correo')
+      };
+
+      if (boton) { boton.disabled = true; boton.textContent = t('form_enviando'); }
+      nota.textContent = '';
+
       try {
-        const r = await fetch(FORM_ENDPOINT, {
-          method:'POST', body:datos, headers:{Accept:'application/json'}
+        const r = await fetch(WEB3FORMS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload)
         });
-        if (!r.ok) throw new Error('http '+r.status);
+        const res = await r.json();
+        if (!r.ok || !res.success) throw new Error(res.message || 'http ' + r.status);
+
         form.reset();
         nota.textContent = t('form_ok');
-        // Evento para Google Analytics (solo dispara si hay consentimiento)
         if (window.gtag) gtag('event','contacto_enviado',{metodo:'formulario'});
       } catch(e) {
         nota.textContent = t('form_error');
+      } finally {
+        if (boton) { boton.disabled = false; boton.textContent = textoBotonOriginal; }
       }
       return;
     }
@@ -223,7 +271,7 @@ if (form) {
     const cuerpo = encodeURIComponent(
       `Nombre: ${datos.get('nombre')}\nCorreo: ${datos.get('correo')}\n\n${datos.get('mensaje')}`
     );
-    window.location.href = `mailto:${CORREO_ESTUDIO}?subject=${encodeURIComponent('Kickoff — ' + datos.get('nombre'))}&body=${cuerpo}`;
+    window.location.href = `mailto:${CORREO_ESTUDIO}?subject=${encodeURIComponent('Kickoff: ' + datos.get('nombre'))}&body=${cuerpo}`;
     nota.textContent = t('form_mailto');
     if (window.gtag) gtag('event','contacto_enviado',{metodo:'mailto'});
   });
